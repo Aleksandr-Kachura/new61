@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Aug 11 12:51:30 UTC 2016
+builddate=20160811 1250
+description=electronicscore
+name=electronicscore
+releasedate=20160407 1737
+vendor=hybris
+version=6.0.0.4
+version.api=6.0.0

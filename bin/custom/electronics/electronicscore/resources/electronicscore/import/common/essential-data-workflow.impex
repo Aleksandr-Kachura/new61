@@ -1,0 +1,27 @@
+# import our workflow
+INSERT_UPDATE WorkflowTemplate;code[unique=true];name[lang=en];owner(uid);description[lang=de];description[lang=en];activationscript;visibleForPrincipals(uid);;;
+;NewAttachRegistration;New Attach Registration;admin;;;;admingroup;;;
+
+
+INSERT_UPDATE WorkflowActionTemplate;code[unique=true];name[lang=en];description[lang=de];description[lang=en];principalAssigned(uid);workflow(code)[unique=true];sendEmail;emailAddress;rendererTemplate(code);actionType(code)
+;NPR_Confirm;Confirmation by an administrator;;;admingroup;NewAttachRegistration;false;;;start
+;NPR_End;End;;;admingroup;NewAttachRegistration;false;;;end
+
+
+INSERT_UPDATE AutomatedWorkflowActionTemplate;code[unique=true];name[lang=en];description[lang=de];description[lang=en];principalAssigned(uid);workflow(code)[unique=true];sendEmail;emailAddress;rendererTemplate(code);actionType(code);jobHandler
+;NPR_Confirm_Positive;"File confirmed";;;admingroup;NewAttachRegistration;false;;;normal;registrationConfirmationActionJob
+;NPR_Confirm_Negative;"File declined";;;admingroup;NewAttachRegistration;false;;;normal;registrationDeclineActionJob
+
+
+INSERT_UPDATE WorkflowDecisionTemplate;code[unique=true];name[lang=en];actionTemplate(code);description[allownull=true];;;;;;
+;NPR001;Confirm file;NPR_Confirm;;;;;;;
+;NPR002;Decline file;NPR_Confirm;;;;;;;
+;NPR003;End;NPR_Confirm_Positive;;;;;;;
+;NPR004;End;NPR_Confirm_Negative;;;;;;;
+
+
+INSERT_UPDATE WorkflowActionTemplateLinkTemplateRelation;source(code)[unique=true];target(code)[unique=true];andConnectionTemplate;qualifier;;;;;;;
+;NPR001;NPR_Confirm_Positive;false;WorkflowActionTemplateLinkTemplateRelation;;;;;;;
+;NPR002;NPR_Confirm_Negative;false;WorkflowActionTemplateLinkTemplateRelation;;;;;;;
+;NPR003;NPR_End;false;WorkflowActionTemplateLinkTemplateRelation;;;;;;;
+;NPR004;NPR_End;false;WorkflowActionTemplateLinkTemplateRelation;;;;;;;

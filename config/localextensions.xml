@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hybrisconfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="resources/schemas/extensions.xsd">
+	<extensions>
+		<!--
+				All extensions located in ${HYBRIS_BIN_DIR}/platform/ext are automatically loaded.
+				More information about how to configure available extensions can be found here : https://wiki.hybris.com/x/nZVzC
+		-->
+
+		<path dir="${HYBRIS_BIN_DIR}" />
+
+
+										
+    <extension name='mcc' />
+    <extension name='backoffice' />
+    <extension name='commercesearchbackoffice' />
+    <extension name='commerceservicesbackoffice' />
+    <extension name='solrfacetsearchbackoffice' />
+    <extension name='solrserver' />
+  
+    
+
+
+    <extension name='yaddon' />
+    <extension name='electronicsstore' />
+    <extension name='apparelstore' />
+    <extension name='liveeditaddon' />
+    <extension name='acceleratorwebservicesaddon' />
+    <extension name='customersupportbackoffice' />
+    <extension name='rulebuilderbackoffice' />
+    <extension name='promotionenginebackoffice' />
+    <extension name='droolsruleengineservices' />
+    <extension name='promotionenginesamplesaddon' />
+     <!-- custom-ext -->
+    <extension name='electronicscore'/>
+    <extension name='electronicsfacades'/>
+    <extension name='electronicsstorefront'/>
+    <extension name='electronicsfulfilmentprocess'/>
+    <extension name='electronicsinitialdata'/>
+    <extension name='electronicscockpits'/>
+
+	</extensions>
+</hybrisconfig>
