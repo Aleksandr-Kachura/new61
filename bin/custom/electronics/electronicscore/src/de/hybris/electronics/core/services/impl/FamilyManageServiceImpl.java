@@ -26,7 +26,7 @@ public class FamilyManageServiceImpl implements FamilyManageService {
      *
      * @param uid field used for remove
      *
-     *            
+     *
      */
     @Override
     public void removeFamilyMember(String uid) {

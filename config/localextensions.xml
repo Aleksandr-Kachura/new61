@@ -10,33 +10,35 @@
 
 
 										
-    <extension name='mcc' />
-    <extension name='backoffice' />
-    <extension name='commercesearchbackoffice' />
-    <extension name='commerceservicesbackoffice' />
-    <extension name='solrfacetsearchbackoffice' />
-    <extension name='solrserver' />
-  
-    
+        <extension name='mcc' />
+        <extension name='backoffice' />
+        <extension name='commercesearchbackoffice' />
+        <extension name='commerceservicesbackoffice' />
+        <extension name='solrfacetsearchbackoffice' />
+        <extension name='solrserver' />
 
 
-    <extension name='yaddon' />
-    <extension name='electronicsstore' />
-    <extension name='apparelstore' />
-    <extension name='liveeditaddon' />
-    <extension name='acceleratorwebservicesaddon' />
-    <extension name='customersupportbackoffice' />
-    <extension name='rulebuilderbackoffice' />
-    <extension name='promotionenginebackoffice' />
-    <extension name='droolsruleengineservices' />
-    <extension name='promotionenginesamplesaddon' />
-     <!-- custom-ext -->
-    <extension name='electronicscore'/>
-    <extension name='electronicsfacades'/>
-    <extension name='electronicsstorefront'/>
-    <extension name='electronicsfulfilmentprocess'/>
-    <extension name='electronicsinitialdata'/>
-    <extension name='electronicscockpits'/>
+
+
+        <extension name='yaddon' />
+        <extension name='electronicsstore' />
+        <extension name='apparelstore' />
+        <extension name='liveeditaddon' />
+        <extension name='acceleratorwebservicesaddon' />
+        <extension name='customersupportbackoffice' />
+        <extension name='rulebuilderbackoffice' />
+        <extension name='promotionenginebackoffice' />
+        <extension name='droolsruleengineservices' />
+        <extension name='promotionenginesamplesaddon' />
+         <!-- custom-ext -->
+        <extension name='electronicscore'/>
+        <extension name='electronicsfacades'/>
+        <extension name='electronicsstorefront'/>
+        <extension name='electronicsfulfilmentprocess'/>
+        <extension name='electronicsinitialdata'/>
+        <extension name='electronicscockpits'/>
+
+        <extension name='turntobackoffice'/>
 
 	</extensions>
 </hybrisconfig>
