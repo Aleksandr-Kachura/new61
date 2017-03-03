@@ -1,10 +1,12 @@
 package de.hybris.electronics.core.services.impl;
 
 
+import de.hybris.electronics.core.model.FamilyMemberModel;
 import de.hybris.electronics.core.services.ElectronicAccountService;
 import de.hybris.electronics.core.services.FamilyManageService;
 import de.hybris.platform.catalog.model.CatalogVersionModel;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
+import de.hybris.platform.core.model.ItemModel;
 import de.hybris.platform.core.model.media.MediaModel;
 import de.hybris.platform.core.model.user.CustomerModel;
 import de.hybris.platform.core.model.user.UserModel;
@@ -167,12 +169,54 @@ public class ElectronicAccountServiceImpl implements ElectronicAccountService {
         final WorkflowTemplateModel workflowTemplate = workflowTemplateService.getWorkflowTemplateForCode("NewAttachRegistration");
 
         final WorkflowModel workflow = workflowService.createWorkflow(workflowTemplate, media, userService.getAdminUser());
+
+        String ownerName;
+        ItemModel owner = media.getOwner();
+        if(owner instanceof FamilyMemberModel) {
+            FamilyMemberModel result = (FamilyMemberModel) owner;
+            ownerName = result.getName();
+        } else {
+            CustomerModel result = (CustomerModel) owner;
+            ownerName = result.getName();
+        }
+
         modelService.save(workflow);
         for (final WorkflowActionModel action : workflow.getActions()) {
+            action.setPatient(ownerName);
+            action.setPrescription(media.getCode());
             modelService.save(action);
         }
 
         workflowProcessingService.startWorkflow(workflow);
+    }
+
+    /**
+     * @param media current item type
+     *              register our workflow
+     */
+    public void stopMedia(final MediaModel media) {
+
+        final WorkflowTemplateModel workflowTemplate = workflowTemplateService.getWorkflowTemplateForCode("NewAttachRegistration");
+
+        final WorkflowModel workflow = workflowService.createWorkflow(workflowTemplate, media, userService.getAdminUser());
+        String ownerName;
+        ItemModel owner = media.getOwner();
+        if(owner instanceof FamilyMemberModel) {
+            FamilyMemberModel result = (FamilyMemberModel) owner;
+            ownerName = result.getName();
+        } else {
+            CustomerModel result = (CustomerModel) owner;
+            ownerName = result.getName();
+        }
+        modelService.save(workflow);
+        for (final WorkflowActionModel action : workflow.getActions()) {
+            action.setPatient(ownerName);
+            action.setPrescription(media.getCode());
+            modelService.save(action);
+        }
+
+        workflowProcessingService.endWorkflow(workflow);
+
     }
 
 

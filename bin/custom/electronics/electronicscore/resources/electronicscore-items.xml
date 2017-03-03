@@ -117,7 +117,7 @@
 				</attributes>
 			</itemtype>
 		</typegroup>
-		
+
 		<typegroup name="Electronics">
 			<itemtype code="Media" generate="true" autocreate="false">
 				<attributes>
@@ -180,6 +180,36 @@
 					<!--</attribute>-->
 				<!--</attributes>-->
 			</itemtype>
+
+
+			<itemtype code="Cart" autocreate="false" generate="false">
+				<description>Extending Cart type with additional attributes for import cart functionality</description>
+				<attributes>
+					<attribute autocreate="true" qualifier="mediaCode" type="java.lang.String">
+						<persistence type="property"/>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Order" generate="true" autocreate="false">
+				<attributes>
+					<attribute autocreate="true" qualifier="mediaCode" type="java.lang.String">
+						<persistence type="property"/>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="WorkflowAction" generate="true" autocreate="false">
+				<attributes>
+					<attribute qualifier="patient" type="java.lang.String">
+						<persistence type="property"/>
+					</attribute>
+					<attribute qualifier="prescription" type="java.lang.String">
+						<persistence type="property"/>
+					</attribute>
+				</attributes>
+			</itemtype>
+
 
 
 		</typegroup>
