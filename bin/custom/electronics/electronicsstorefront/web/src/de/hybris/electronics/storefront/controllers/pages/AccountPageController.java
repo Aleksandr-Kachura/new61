@@ -52,6 +52,8 @@ import de.hybris.platform.commercefacades.order.data.OrderHistoryData;
 import de.hybris.platform.commercefacades.product.ProductFacade;
 import de.hybris.platform.commercefacades.product.ProductOption;
 import de.hybris.platform.commercefacades.product.data.ProductData;
+import de.hybris.platform.commercefacades.storesession.StoreSessionFacade;
+import de.hybris.platform.commercefacades.storesession.data.LanguageData;
 import de.hybris.platform.commercefacades.user.UserFacade;
 import de.hybris.platform.commercefacades.user.data.*;
 import de.hybris.platform.commercefacades.user.exceptions.PasswordMismatchException;
@@ -162,6 +164,9 @@ public class AccountPageController extends AbstractSearchPageController
 
 	@Resource(name = "accountBreadcrumbBuilder")
 	private ResourceBreadcrumbBuilder accountBreadcrumbBuilder;
+
+	@Resource(name = "storeSessionFacade")
+	private StoreSessionFacade storeSessionFacade;
 
 	@Resource(name = "passwordValidator")
 	private PasswordValidator passwordValidator;
@@ -1041,7 +1046,12 @@ public class AccountPageController extends AbstractSearchPageController
 		return getViewForPage(model);
 	}
 
-    /**
+	@ModelAttribute("currentLanguage")
+	public LanguageData getCurrentLanguage()
+	{
+		return storeSessionFacade.getCurrentLanguage();
+	}
+	/**
      *
      * @param uid for edit family member
      * @param model

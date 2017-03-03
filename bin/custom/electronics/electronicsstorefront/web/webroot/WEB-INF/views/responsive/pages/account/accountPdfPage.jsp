@@ -20,6 +20,7 @@
 			<th style="text-align: left">Remove</th>
 		</tr>
 		</thead>
+		${currentLanguage.isocode}
 		<tbody>
 			<c:forEach items="${user.medias}" var="media">
 					<tr>
