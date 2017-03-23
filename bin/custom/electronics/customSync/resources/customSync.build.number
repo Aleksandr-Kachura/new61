@@ -1,0 +1,8 @@
+#Ant properties
+#Tue Aug 12 12:27:39 CEST 2014
+builddate=20140812 1227
+description=customSync
+name=customSync
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0
