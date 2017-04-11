@@ -13,6 +13,8 @@
  */
 package de.hybris.electronics.storefront.controllers.pages;
 
+import de.hybris.electronics.core.jalo.RequestEmail;
+import de.hybris.electronics.core.model.RequestEmailModel;
 import de.hybris.platform.acceleratorfacades.flow.impl.SessionOverrideCheckoutFlowFacade;
 import de.hybris.platform.acceleratorservices.controllers.page.PageType;
 import de.hybris.platform.acceleratorservices.enums.CheckoutFlowEnum;
@@ -31,6 +33,7 @@ import de.hybris.platform.commercefacades.product.ProductFacade;
 import de.hybris.platform.commercefacades.product.ProductOption;
 import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
+import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.enumeration.EnumerationService;
 import de.hybris.electronics.storefront.controllers.ControllerConstants;
 
@@ -40,6 +43,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import de.hybris.platform.product.ProductService;
+import de.hybris.platform.servicelayer.model.ModelService;
+import de.hybris.platform.store.services.BaseStoreService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
@@ -53,6 +59,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 
 /**
@@ -79,6 +87,16 @@ public class CartPageController extends AbstractCartPageController
 
 	@Resource(name = "productVariantFacade")
 	private ProductFacade productFacade;
+
+	@Resource(name = "modelService")
+	private ModelService modelService;
+
+	@Resource(name = "productService")
+	private ProductService productService;
+
+	@Resource(name = "baseStoreService")
+	private BaseStoreService baseStoreService;
+
 
 	@ModelAttribute("showCheckoutStrategies")
 	public boolean isCheckoutStrategyVisible()
@@ -189,6 +207,21 @@ public class CartPageController extends AbstractCartPageController
 		// when they arrive on the '/checkout' page.
 		return REDIRECT_PREFIX + "/checkout";
 	}
+
+
+	@RequestMapping(value = "/saveRequest", method = RequestMethod.POST)
+	public String updateSaveRequest(@RequestParam("productCode") final String productCode,
+									@RequestParam(value = "email", required = false, defaultValue = "false") final String email, final Model model) throws CMSItemNotFoundException {
+
+		RequestEmailModel  reqEmail = new RequestEmailModel();
+		ProductModel prod =  productService.getProductForCode(productCode);
+		reqEmail.setEmail(email);
+		reqEmail.setProduct(prod);
+		reqEmail.setBaseStore(baseStoreService.getCurrentBaseStore());
+		modelService.save(reqEmail);
+		return REDIRECT_PREFIX;
+	}
+
 
 
 

@@ -5,9 +5,20 @@
 <%@ taglib prefix="theme" tagdir="/WEB-INF/tags/shared/theme" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
+<c:url value="/cart/saveRequest" var="saveReq"/>
 
 <c:url value="${url}" var="addToCartUrl"/>
 <div id="addToCartTitle" style="display:none"><spring:theme code="basket.added.to.basket"/></div>
+<c:if test="${product.purchasable and product.stock.stockLevelStatus.code eq 'outOfStock' }">
+	<form method="post"  action="${saveReq}?CSRFToken=${CSRFToken}">
+		<div class="form-group">
+			<label for="formGroupExampleInput">Email</label>
+			<input type="text" name="email"  class="form-control" id="formGroupExampleInput" placeholder="Email">
+		</div>
+		<input type="hidden" name="productCode" value="${product.code}"/>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</c:if>
 <form:form method="post" id="addToCartForm" class="add_to_cart_form" action="${addToCartUrl}">
 <c:if test="${product.purchasable}">
 	<input type="hidden" maxlength="3" size="1" id="qty" name="qty" class="qty js-qty-selector-input" value="1">

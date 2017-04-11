@@ -446,5 +446,10 @@
 	<bean id="ElectronicAccountService" class="de.hybris.electronics.core.services.impl.ElectronicAccountServiceImpl"/>
 	<!--for familyManage functionality-->
 	<bean id="familyManageService" class="de.hybris.electronics.core.services.impl.FamilyManageServiceImpl"/>
+	<!--for pdf functionality-->
+	<bean id="RequestEmailService" class="de.hybris.electronics.core.services.impl.EmailMeServiceImpl"/>
+
+
+	<bean id="meEmailJob" class="de.hybris.electronics.core.jobs.email.MeEmailJob" autowire="byName"/>
 
 </beans>

@@ -39,7 +39,7 @@
         <extension name='electronicscockpits'/>
 
         <extension name='turntobackoffice'/>
-         <extension name='customSync'/>
+        <extension name='customSync'/>
 
 	</extensions>
 </hybrisconfig>
