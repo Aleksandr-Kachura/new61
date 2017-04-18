@@ -229,6 +229,13 @@
 
 			</itemtype>
 
+			<itemtype code="ElectronicVariantProduct" extends="VariantProduct" autocreate="true" generate="true" metatype="VariantType">
+				<attributes>
+					<attribute qualifier="color" type="localized:java.lang.String" metatype="VariantAttributeDescriptor">
+						<persistence type="property"/>
+					</attribute>
+				</attributes>
+			</itemtype>
 
 
 		</typegroup>

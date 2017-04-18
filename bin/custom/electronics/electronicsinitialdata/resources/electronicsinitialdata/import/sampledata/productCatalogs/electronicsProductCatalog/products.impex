@@ -274,6 +274,13 @@ INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufa
 ;5864567;576, brand_88;Kodak;1199793;pieces;0041771199791
 ;5864583;576, brand_88;Kodak;1763259;pieces;0041771763251
 ;5897548;578, brand_10;Canon;3820B104AA;pieces;
+;M18729_B;578, brand_10;Canon;3820B104AA;pieces;4905524593235;ElectronicVariantProduct
+
+INSERT_UPDATE ElectronicVariantProduct;code[unique=true];$baseProduct;ean;unit(code);color;$supercategories;approvalstatus(code)[default='approved'];$catalogVersion
+;19784405_red;M18729_B;4905524593235;pieces;Red;
+;19784405_green;M18729_B;4905524593235;pieces;Green;
+;19784405_blue;M18729_B;4905524593235;pieces;Blue;
+
 
 INSERT_UPDATE ElectronicsColorVariantProduct;code[unique=true];$baseProduct;ean;unit(code);color;$supercategories;approvalstatus(code)[default='approved'];$catalogVersion
 ;1978440_red;1978440;4905524593235;pieces;Red;
